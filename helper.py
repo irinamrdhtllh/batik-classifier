@@ -58,7 +58,7 @@ def train(
     model.train()
 
     for epoch in range(num_epoch):
-        epsilon = 1e-4
+        epsilon = 1e-2
         running_loss = 0.0
 
         for images, labels in train_data:
@@ -84,7 +84,7 @@ def train(
         )
 
         if early_stopping and (
-            running_loss / len(train_data) <= epsilon or val_accuracy >= 90
+            running_loss / len(train_data) <= epsilon and val_accuracy >= 90
         ):
             break
 
